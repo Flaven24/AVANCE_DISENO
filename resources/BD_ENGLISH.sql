@@ -1,3 +1,5 @@
+--LA BASE DE DATOS SE DEBE LLAMAR "calificame"
+
 CREATE SEQUENCE public.sq_university START 1 INCREMENT 1;
 CREATE TABLE university(
 iduniversity int default nextval('public.sq_university') primary key,
