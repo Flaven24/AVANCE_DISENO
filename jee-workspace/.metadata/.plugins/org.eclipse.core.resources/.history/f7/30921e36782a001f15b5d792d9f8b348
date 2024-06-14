@@ -1,0 +1,35 @@
+package pe.edu.calificame.bean;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
+
+import model.University;
+
+@Named
+@SessionScoped
+public class BeanUniversity implements Serializable{
+	private List<University> listUniversity = new ArrayList();
+
+	public List<University> getListUniversity() {
+		University uni = new University();
+		uni.setCname("UTP");
+		listUniversity.add(uni);
+		uni = new University();
+		uni.setCname("UCSP");
+		listUniversity.add(uni);
+		uni = new University();
+		uni.setCname("UCSP");
+		listUniversity.add(uni);
+		return listUniversity;
+	}
+
+	public void setListUniversity(List<University> listUniversity) {
+		this.listUniversity = listUniversity;
+	}
+	
+	
+}

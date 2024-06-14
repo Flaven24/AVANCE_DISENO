@@ -1,0 +1,5 @@
+package pe.edu.calificame.bean;
+
+public class BeanUniversity {
+
+}

@@ -1,0 +1,5 @@
+package pe.edu.calificame.dto;
+
+public class DtoUniversity {
+
+}

@@ -1,0 +1,20 @@
+package pe.edu.calificame.bean;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+
+/**
+ * Session Bean implementation class BeanUniversity_
+ */
+@Stateless
+@LocalBean
+public class BeanUniversity_ {
+
+    /**
+     * Default constructor. 
+     */
+    public BeanUniversity_() {
+        // TODO Auto-generated constructor stub
+    }
+
+}
