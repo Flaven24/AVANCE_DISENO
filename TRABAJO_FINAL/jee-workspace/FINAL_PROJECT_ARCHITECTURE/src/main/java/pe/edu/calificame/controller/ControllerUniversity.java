@@ -40,11 +40,11 @@ public class ControllerUniversity implements Serializable {
 	}
 
 	public List<University> getListUniversity() {
+		listUniversity = universityServiceImpl.listAll();
 		return listUniversity;
 	}
 
 	public void setListUniversity(List<University> listUniversity) {
-		listUniversity = universityServiceImpl.listAll();
 		this.listUniversity = listUniversity;
 	}
 
