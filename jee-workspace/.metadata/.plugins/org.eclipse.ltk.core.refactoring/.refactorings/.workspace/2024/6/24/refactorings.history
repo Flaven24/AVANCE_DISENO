@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;NUEVO_JPA_2024&apos;" deleteContents="true" description="Delete resource &apos;NUEVO_JPA_2024&apos;" element1="/NUEVO_JPA_2024" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1718382390848"/>&#x0A;<refactoring comment="Rename resource &apos;FINA_PROJECT_ARCHITECTURE&apos; to &apos;FINAL_PROJECT_ARCHITECTURE&apos;" description="Rename resource &apos;FINA_PROJECT_ARCHITECTURE&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/FINA_PROJECT_ARCHITECTURE" name="FINAL_PROJECT_ARCHITECTURE" stamp="1718387408547" updateReferences="true"/>
-</session>
