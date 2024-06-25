@@ -11,7 +11,11 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name="detail_university_professor")
-@NamedQuery(name="DetailUniversityProfessor.findAll", query="SELECT d FROM DetailUniversityProfessor d")
+@NamedQueries({
+	@NamedQuery(name="DetailUniversityProfessor.findAll", query="SELECT d FROM DetailUniversityProfessor d"),
+	@NamedQuery(name="DetailUniversityProfessor.findByIdUniversity", query="SELECT d FROM DetailUniversityProfessor d WHERE d.university.iduniversity=:iduniversity ")
+	
+})
 public class DetailUniversityProfessor implements Serializable {
 	private static final long serialVersionUID = 1L;
 

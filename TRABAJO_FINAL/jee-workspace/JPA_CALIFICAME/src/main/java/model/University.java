@@ -11,7 +11,11 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="University.findAll", query="SELECT u FROM University u")
+@NamedQueries({
+	@NamedQuery(name="University.findAll", query="SELECT u FROM University u"),
+	@NamedQuery(name="University.findByIdUniversity", query="SELECT u FROM University u WHERE u.iduniversity=:iduniversity "),
+	@NamedQuery(name="University.findByCname", query="SELECT u FROM University u WHERE u.cname LIKE :cname")
+})
 public class University implements Serializable {
 	private static final long serialVersionUID = 1L;
 
