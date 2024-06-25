@@ -9,29 +9,25 @@
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
 <h:head>
-	<title>Universities JSF</title>
+	<title>University JSF</title>
 </h:head>
 <h:body>
 	<h:form id="formId">
 
-
-		<a href="#{request.contextPath}/university/AddUniversity.jsp">Agregar
-			Universidad</a>
+		
 	 
-	 	lista universidades
-		<h:dataTable value="#{controllerUniversity.listUniversity}" var="e"
+	 	lista profesores
+		<h:dataTable value="#{controllerDetailUniversity.listProfessor}" var="e"
 			border="1">
 
 			<h:column>
-				<h:outputText value="#{e.iduniversity}"></h:outputText>
+				<h:outputText value="#{e.cname}"></h:outputText>
+			</h:column>
+			<h:column>
+				<h:outputText value="#{e.clastname}"></h:outputText>
 			</h:column>
 
-			<h:column>
-				<h:commandLink action="#{controllerUniversity.selectUniversity}">
-					<h:outputText value="#{e.cname}"></h:outputText>
-					<f:param name="param" value="#{e.iduniversity}"></f:param>
-				</h:commandLink>
-			</h:column>
+			
 
 
 

@@ -7,8 +7,10 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
+import model.DetailUniversityProfessor;
 import model.University;
 import pe.edu.calificame.dao.CrudDAOImpl;
+import pe.edu.calificame.dao.DetailUniversityProfessorDAOImpl;
 import pe.edu.calificame.dao.UniversityDAOImpl;
 
 /**
@@ -20,6 +22,8 @@ public class UniversityServiceImpl implements UniversityService {
 
 	@Inject
 	UniversityDAOImpl universityDAOImpl;
+	@Inject
+	DetailUniversityProfessorDAOImpl detailUniversityProfessorDAOImpl;
 
 	@Inject
 	CrudDAOImpl crudDAOImpl;
@@ -55,6 +59,21 @@ public class UniversityServiceImpl implements UniversityService {
 		return universityDAOImpl.listAll();
 	}
 
+	@Override
+	public List<University> findByCname(String cname) {
+		return universityDAOImpl.findByCname("%"+cname.toUpperCase()+"%");
+	}
+
+	@Override
+	public University findByIdUniversity(Integer iduniversity) {
+		return universityDAOImpl.findByIdUniversity(iduniversity);
+	}
+
+	@Override
+	public List<DetailUniversityProfessor> findProfessorByIdUniversity(Integer iduniversity) {
+		return detailUniversityProfessorDAOImpl.findProfessorByIdUniversity(iduniversity);
+	}
+	
 	
 
 }

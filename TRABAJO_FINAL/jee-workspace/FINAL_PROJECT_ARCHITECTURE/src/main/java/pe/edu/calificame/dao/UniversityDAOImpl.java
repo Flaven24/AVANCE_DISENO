@@ -31,4 +31,17 @@ public class UniversityDAOImpl implements UniversityDAO {
 		List<University> lista = em.createNamedQuery("University.findAll").getResultList();
 		return lista;
 	}
+
+	@Override
+	public List<University> findByCname(String cname) {
+		return (List<University>) em.createNamedQuery("University.findByCname").setParameter("cname", cname)
+				.getResultList();
+	}
+
+	@Override
+	public University findByIdUniversity(Integer iduniversity) {
+		return (University) em.createNamedQuery("University.findByIdUniversity")
+				.setParameter("iduniversity", iduniversity).getSingleResult();
+	}
+
 }

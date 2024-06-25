@@ -2,6 +2,7 @@ package pe.edu.calificame.service;
 
 import java.util.List;
 
+import model.DetailUniversityProfessor;
 import model.University;
 
 public interface UniversityService {
@@ -13,4 +14,11 @@ public interface UniversityService {
 	void delete(University university);
 
 	List<University> listAll();
+
+	List<University> findByCname(String cname);
+
+	University findByIdUniversity(Integer iduniversity);
+
+	List<DetailUniversityProfessor> findProfessorByIdUniversity(Integer iduniversity);
+
 }
