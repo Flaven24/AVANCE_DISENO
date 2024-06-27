@@ -10,9 +10,9 @@
 		<class>model.DetailUniversityProfessor</class>
 		<class>model.DifficultyStatus</class>
 		<class>model.Professor</class>
-		<class>model.Rating</class>
 		<class>model.Role</class>
 		<class>model.University</class>
 		<class>model.User</class>
+		<class>model.Rating</class>
 	</persistence-unit>
 </persistence>

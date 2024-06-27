@@ -16,6 +16,7 @@ public class DifficultyStatus implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer iddifficulty;
 
 	private String cstatus;
@@ -63,6 +64,11 @@ public class DifficultyStatus implements Serializable {
 		rating.setDifficultyStatus(null);
 
 		return rating;
+	}
+	
+	@Override
+	public String toString() {
+		return this.cstatus;
 	}
 
 }

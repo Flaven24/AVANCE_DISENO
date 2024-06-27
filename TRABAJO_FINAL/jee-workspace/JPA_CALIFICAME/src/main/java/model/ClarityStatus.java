@@ -16,6 +16,7 @@ public class ClarityStatus implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idclarity;
 
 	private String cstatus;
@@ -65,4 +66,10 @@ public class ClarityStatus implements Serializable {
 		return rating;
 	}
 
+	@Override
+	public String toString() {
+		return this.cstatus;
+	}
+
+	
 }

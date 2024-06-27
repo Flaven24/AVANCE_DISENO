@@ -12,13 +12,14 @@ import java.util.List;
  */
 @Entity
 @NamedQueries({
-	@NamedQuery(name="Professor.findAll", query="SELECT p FROM Professor p")
+	@NamedQuery(name="Professor.findAll", query="SELECT p FROM Professor p"),
+	@NamedQuery(name="Professor.findByIdprofessor", query="SELECT p FROM Professor p WHERE p.idprofessor=:idprofessor")
 })
-
 public class Professor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idprofessor;
 
 	private Boolean bactive;
@@ -36,6 +37,10 @@ public class Professor implements Serializable {
 	//bi-directional many-to-one association to DetailUniversityProfessor
 	@OneToMany(mappedBy="professor")
 	private List<DetailUniversityProfessor> detailUniversityProfessors;
+
+	//bi-directional many-to-one association to Rating
+	@OneToMany(mappedBy="professor")
+	private List<Rating> ratings;
 
 	public Professor() {
 	}
@@ -122,6 +127,28 @@ public class Professor implements Serializable {
 		detailUniversityProfessor.setProfessor(null);
 
 		return detailUniversityProfessor;
+	}
+
+	public List<Rating> getRatings() {
+		return this.ratings;
+	}
+
+	public void setRatings(List<Rating> ratings) {
+		this.ratings = ratings;
+	}
+
+	public Rating addRating(Rating rating) {
+		getRatings().add(rating);
+		rating.setProfessor(this);
+
+		return rating;
+	}
+
+	public Rating removeRating(Rating rating) {
+		getRatings().remove(rating);
+		rating.setProfessor(null);
+
+		return rating;
 	}
 
 }

@@ -15,6 +15,7 @@ public class Rating implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idrating;
 
 	private Boolean brecommendation;
@@ -32,6 +33,16 @@ public class Rating implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="iddifficulty")
 	private DifficultyStatus difficultyStatus;
+
+	//bi-directional many-to-one association to Professor
+	@ManyToOne
+	@JoinColumn(name="idprofessor")
+	private Professor professor;
+
+	//bi-directional many-to-one association to University
+	@ManyToOne
+	@JoinColumn(name="iduniversity")
+	private University university;
 
 	public Rating() {
 	}
@@ -82,6 +93,22 @@ public class Rating implements Serializable {
 
 	public void setDifficultyStatus(DifficultyStatus difficultyStatus) {
 		this.difficultyStatus = difficultyStatus;
+	}
+
+	public Professor getProfessor() {
+		return this.professor;
+	}
+
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
+	}
+
+	public University getUniversity() {
+		return this.university;
+	}
+
+	public void setUniversity(University university) {
+		this.university = university;
 	}
 
 }

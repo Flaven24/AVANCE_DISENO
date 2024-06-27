@@ -13,14 +13,15 @@ import java.util.List;
 @Entity
 @NamedQueries({
 	@NamedQuery(name="University.findAll", query="SELECT u FROM University u"),
-	@NamedQuery(name="University.findByIdUniversity", query="SELECT u FROM University u WHERE u.iduniversity=:iduniversity "),
-	@NamedQuery(name="University.findByCname", query="SELECT u FROM University u WHERE u.cname LIKE :cname")
+	@NamedQuery(name="University.findByCname", query="SELECT u FROM University u WHERE u.cname LIKE :cname "),
+	@NamedQuery(name="University.findByIdUniversity", query="SELECT u FROM University u WHERE u.iduniversity=:iduniversity ")
 })
+
 public class University implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer iduniversity;
 
 	private Boolean bactive;
@@ -42,6 +43,10 @@ public class University implements Serializable {
 	//bi-directional many-to-one association to DetailUniversityProfessor
 	@OneToMany(mappedBy="university")
 	private List<DetailUniversityProfessor> detailUniversityProfessors;
+
+	//bi-directional many-to-one association to Rating
+	@OneToMany(mappedBy="university")
+	private List<Rating> ratings;
 
 	public University() {
 	}
@@ -150,6 +155,28 @@ public class University implements Serializable {
 		detailUniversityProfessor.setUniversity(null);
 
 		return detailUniversityProfessor;
+	}
+
+	public List<Rating> getRatings() {
+		return this.ratings;
+	}
+
+	public void setRatings(List<Rating> ratings) {
+		this.ratings = ratings;
+	}
+
+	public Rating addRating(Rating rating) {
+		getRatings().add(rating);
+		rating.setUniversity(this);
+
+		return rating;
+	}
+
+	public Rating removeRating(Rating rating) {
+		getRatings().remove(rating);
+		rating.setUniversity(null);
+
+		return rating;
 	}
 
 }
