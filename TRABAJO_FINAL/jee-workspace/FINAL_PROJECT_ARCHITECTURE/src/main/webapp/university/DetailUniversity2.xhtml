@@ -1,0 +1,63 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<h:head>
+	<title>CALIFICAME</title>
+</h:head>
+<h:body>
+	<b:navBar brand="CALIFICAME" brandHref="#" fixed="top" inverse="true">
+		<b:navbarLinks>
+			<b:navLink value="Home" href="#"></b:navLink>
+			<b:navLink value="About" href="#about"></b:navLink>
+			<b:navLink value="Contact" href="#contact"></b:navLink>
+		</b:navbarLinks>
+	</b:navBar>
+
+	<b:container>
+		<b:jumbotron></b:jumbotron>
+		<h:form id="formId">
+
+
+			<h2>Lista de profesores</h2>
+			<a class="btn btn-lg btn-success"
+				href="#{request.contextPath}/professor/AddProfessor.xhtml">Agregar
+				nuevo Profesor</a>
+				
+				<b:row>
+				  <b:column span="4"><h:outputText value="span=4"/></b:column>
+				  <b:column span="4"><h:outputText value="span=4"/></b:column>
+				  <b:column span="4"><h:outputText value="span=4"/></b:column>
+				</b:row>
+				
+			<b:dataTable value="#{controllerDetailUniversity.listProfessor}"
+				var="e" border="1" paginated="false" >
+
+				<b:dataTableColumn label="Nombre">
+					<h:outputText value="#{e. cname}"></h:outputText>
+				</b:dataTableColumn>
+				<b:dataTableColumn label="Apellido">
+					<h:outputText value="#{e.clastname}"></h:outputText>
+				</b:dataTableColumn>
+				<b:dataTableColumn label="">
+					<h:commandLink action="#{controllerDetailUniversity.selectProfessor}">
+						<b:button value="Calificar" look="primary"/>
+						<f:param name="param" value="#{e.idprofessor}"></f:param>
+					</h:commandLink>
+				</b:dataTableColumn>
+				
+			</b:dataTable>
+
+
+
+		</h:form>
+	</b:container>
+
+</h:body>
+</html>
