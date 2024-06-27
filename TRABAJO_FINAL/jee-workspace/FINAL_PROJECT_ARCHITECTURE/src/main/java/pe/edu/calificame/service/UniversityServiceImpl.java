@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 import model.DetailUniversityProfessor;
+import model.Professor;
 import model.University;
 import pe.edu.calificame.dao.CrudDAOImpl;
 import pe.edu.calificame.dao.DetailUniversityProfessorDAOImpl;
@@ -43,10 +44,8 @@ public class UniversityServiceImpl implements UniversityService {
 
 	@Override
 	public void update(University university) {
-		crudDAOImpl.update(university);
-		
+		crudDAOImpl.update(university);		
 	}
-
 
 	@Override
 	public void delete(University university) {
@@ -72,6 +71,16 @@ public class UniversityServiceImpl implements UniversityService {
 	@Override
 	public List<DetailUniversityProfessor> findProfessorByIdUniversity(Integer iduniversity) {
 		return detailUniversityProfessorDAOImpl.findProfessorByIdUniversity(iduniversity);
+	}
+
+	public void registerProfessor(Professor professor, University university) {
+		crudDAOImpl.register(professor);
+		System.out.println("ID PROFSSOR: "+professor.getIdprofessor());
+		
+		DetailUniversityProfessor detail = new DetailUniversityProfessor();
+		detail.setProfessor(professor);
+		detail.setUniversity(university);
+		crudDAOImpl.register(detail);
 	}
 	
 	

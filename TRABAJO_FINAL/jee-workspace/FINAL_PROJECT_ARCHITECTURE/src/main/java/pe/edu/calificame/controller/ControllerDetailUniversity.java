@@ -3,9 +3,11 @@ package pe.edu.calificame.controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -27,6 +29,9 @@ public class ControllerDetailUniversity implements Serializable {
 
 	@Inject
 	UniversityServiceImpl universityServiceImpl;
+	@Inject
+	ControllerDetailProfessor controllerDetailProfessor;
+	
 
 	public ControllerDetailUniversity() {
 	}
@@ -44,6 +49,14 @@ public class ControllerDetailUniversity implements Serializable {
 		this.iduniversity = iduniversity;
 		university = universityServiceImpl.findByIdUniversity(iduniversity);
 		listProfessor = getProfessors();
+	}	
+	
+	public University getUniversity() {
+		return university;
+	}
+
+	public void setUniversity(University university) {
+		this.university = university;
 	}
 
 	private List<Professor> getProfessors() {
@@ -60,5 +73,13 @@ public class ControllerDetailUniversity implements Serializable {
 
 	public void setListProfessor(List<Professor> listProfessor) {
 		this.listProfessor = listProfessor;
+	}
+	
+	public String selectProfessor() {
+		Map<String, String> map = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();		
+		int idprofessor = Integer.parseInt(map.get("param"));
+		System.out.println("Numero seleccionado: " + idprofessor);
+		controllerDetailProfessor.setIdprofessor(idprofessor);
+		return "/professor/DetailProfessor";
 	}
 }

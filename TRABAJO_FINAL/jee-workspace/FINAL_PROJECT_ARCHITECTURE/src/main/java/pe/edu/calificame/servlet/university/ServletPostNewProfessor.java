@@ -11,22 +11,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.University;
+import model.Professor;
+import pe.edu.calificame.controller.ControllerDetailUniversity;
 import pe.edu.calificame.service.UniversityServiceImpl;
 
 /**
- * Servlet implementation class ServletPostNewUniversity
+ * Servlet implementation class ServletPostNewProfessor
  */
-@WebServlet("/university/ServletPostNewUniversity")
-public class ServletPostNewUniversity extends HttpServlet {
+@WebServlet("/professor/ServletPostNewProfessor")
+public class ServletPostNewProfessor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-     
+       
+	@Inject
+	ControllerDetailUniversity controllerDetailUniversity;
 	@Inject
 	UniversityServiceImpl universityServiceImpl;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletPostNewUniversity() {
+    public ServletPostNewProfessor() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,20 +39,18 @@ public class ServletPostNewUniversity extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		String name=request.getParameter("name");
-		String webpage=request.getParameter("webpage");
-		System.out.println(name);
-		System.out.println(webpage);
+		String lastname=request.getParameter("lastname");
 		
-		University university= new University();
-		university.setCname(name);
-		university.setCwebpage(webpage);
-		university.setDregist(new Timestamp(new Date().getTime()));
+		Professor professor = new Professor();
+		professor.setCname(name);
+		professor.setClastname(lastname);
+		professor.setBactive(true);		
+		professor.setDregist(new Timestamp(new Date().getTime()));
+		universityServiceImpl.registerProfessor(professor,controllerDetailUniversity.getUniversity());
 		
-		universityServiceImpl.register(university);
-		System.out.println("Universidad Registrada");
-		request.getRequestDispatcher("/university/University.xhtml").forward(request, response);
+		System.out.println("Profesor Registrado");
+		request.getRequestDispatcher("/university/DetailUniversity.xhtml").forward(request, response);
 	}
 
 }

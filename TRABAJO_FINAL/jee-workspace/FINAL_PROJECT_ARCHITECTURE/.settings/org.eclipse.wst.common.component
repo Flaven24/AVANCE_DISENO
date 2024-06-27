@@ -1,21 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-        
-    <wb-module deploy-name="FINAL_PROJECT_ARCHITECTURE">
-                
-        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-                
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-                
-        <dependent-module archiveName="JPA_CALIFICAME.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/JPA_CALIFICAME/JPA_CALIFICAME">
-                        
-            <dependency-type>uses</dependency-type>
-                    
-        </dependent-module>
-                
-        <property name="context-root" value="FINAL_PROJECT_ARCHITECTURE"/>
-                
-        <property name="java-output-path" value="/FINAL_PROJECT_ARCHITECTURE/build/classes"/>
             
-    </wb-module>
     
+    <wb-module deploy-name="FINAL_PROJECT_ARCHITECTURE">
+                        
+        
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+                        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+                        
+        
+        <dependent-module archiveName="JPA_CALIFICAME.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/JPA_CALIFICAME/JPA_CALIFICAME">
+                                    
+            
+            <dependency-type>uses</dependency-type>
+                                
+        
+        </dependent-module>
+        <dependent-module archiveName="BootsFaces-OSP-1.5.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/FINAL_PROJECT_ARCHITECTURE/libraries/BootsFaces-OSP-1.5.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="omnifaces-3.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/FINAL_PROJECT_ARCHITECTURE/libraries/omnifaces-3.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+                        
+        
+        <property name="context-root" value="FINAL_PROJECT_ARCHITECTURE"/>
+                        
+        
+        <property name="java-output-path" value="/FINAL_PROJECT_ARCHITECTURE/build/classes"/>
+                    
+    
+    </wb-module>
+        
+
 </project-modules>

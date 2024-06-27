@@ -21,10 +21,21 @@
 	</b:navBar>
 	<b:container>
 		<b:jumbotron></b:jumbotron>
-		<form id="formId" action="ServletPostNewUniversity" method="post">
+		<form id="formId" action="ServletPostNewRating" method="post">
 			<h:form>
-				<b:inputText placeholder="Nombre Universidad" name="name" />
-				<b:inputText placeholder="Pagina Web" name="webpage" />
+			
+				<b:inputText placeholder="Calificacion" name="comment" />
+				<b:selectOneMenu value="#{controllerRating.claritySelected.cstatus}" name="clarity">
+					<f:selectItem itemLabel="--Seleccione" itemValue="-1"></f:selectItem>
+					<f:selectItems value="#{controllerRating.listClarity}" ></f:selectItems>
+				</b:selectOneMenu>
+				
+				<b:selectOneMenu value="#{controllerRating.difficultySelected.cstatus}" name="difficulty">
+					<f:selectItem itemLabel="--Seleccione" itemValue="-1"></f:selectItem>
+					<f:selectItems value="#{controllerRating.listDifficulty}" ></f:selectItems>
+				</b:selectOneMenu>
+				
+<!-- 				<b:inputText placeholder="Pagina Web" name="webpage" /> -->
 				<input class="btn btn-sm btn-info" type="submit" value="Registrar" />
 			</h:form>
 		</form>
