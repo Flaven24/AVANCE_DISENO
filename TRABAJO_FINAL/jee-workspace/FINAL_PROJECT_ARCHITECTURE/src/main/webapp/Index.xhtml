@@ -15,6 +15,7 @@
 	<b:navBar brand="CALIFICAME" brandHref="#" fixed="top" inverse="true">
 		<b:navbarLinks>
 			<b:navLink value="Home" href="#"></b:navLink>
+			<b:navLink value="Home" href="#{request.contextPath}/Index.xhtml"></b:navLink>
 			<b:navLink value="About" href="#about"></b:navLink>
 			<b:navLink value="Contact" href="#contact"></b:navLink>
 		</b:navbarLinks>
@@ -32,6 +33,7 @@
 					#{' '}
 					<b:button size="lg" look="default" value="Profesores"
 						href="#{request.contextPath}/Professor.xhtml" />
+						href="#{request.contextPath}/professor/DetailProfessor.xhtml" />
 				</p>
 
 
