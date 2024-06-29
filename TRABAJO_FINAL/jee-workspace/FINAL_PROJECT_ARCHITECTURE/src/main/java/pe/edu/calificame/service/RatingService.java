@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import model.ClarityStatus;
 import model.DifficultyStatus;
+import model.Rating;
 import pe.edu.calificame.dao.CourseDAO;
 import pe.edu.calificame.dao.CourseDAOImpl;
 
@@ -17,9 +18,12 @@ import pe.edu.calificame.dao.CourseDAOImpl;
 
 public interface RatingService {
 
+	void register(Rating rating);
+
 	List<ClarityStatus> listClarityStatus();
 
 	List<DifficultyStatus> listDifficultyStatus();
 
+	List<Rating> listRatingByIduniversityByIdProfessor(Integer iduniversity, Integer idprofessor);
 
 }

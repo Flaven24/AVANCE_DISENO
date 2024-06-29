@@ -10,7 +10,11 @@ import java.sql.Timestamp;
  * 
  */
 @Entity
-@NamedQuery(name="Rating.findAll", query="SELECT r FROM Rating r")
+@NamedQueries({
+	@NamedQuery(name="Rating.findAll", query="SELECT r FROM Rating r"),
+	@NamedQuery(name="Rating.findByIdUniversityByIdProfessor", query="SELECT r FROM Rating r WHERE r.professor.idprofessor=:idprofessor AND r.university.iduniversity=:iduniversity ")
+	
+})
 public class Rating implements Serializable {
 	private static final long serialVersionUID = 1L;
 

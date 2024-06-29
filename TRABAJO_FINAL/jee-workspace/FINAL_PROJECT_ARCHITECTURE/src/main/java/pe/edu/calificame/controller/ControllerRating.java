@@ -14,6 +14,7 @@ import javax.inject.Named;
 import model.ClarityStatus;
 import model.Course;
 import model.DifficultyStatus;
+import model.Rating;
 import model.University;
 import pe.edu.calificame.dao.CourseDAO;
 import pe.edu.calificame.dao.CourseDAOImpl;
@@ -31,8 +32,11 @@ public class ControllerRating implements Serializable {
 	private List<ClarityStatus> listClarity;
 	private List<DifficultyStatus> listDifficulty;
 
-	private ClarityStatus claritySelected= new ClarityStatus();
-	private DifficultyStatus difficultySelected= new DifficultyStatus();
+	private ClarityStatus claritySelected = new ClarityStatus();
+	private DifficultyStatus difficultySelected = new DifficultyStatus();
+	private String comment;
+
+	private Rating rating = new Rating();
 
 	@Inject
 	RatingServiceImpl ratingServiceImpl;
@@ -76,6 +80,22 @@ public class ControllerRating implements Serializable {
 
 	public void setDifficultySelected(DifficultyStatus difficultySelected) {
 		this.difficultySelected = difficultySelected;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public Rating getRating() {
+		return rating;
+	}
+
+	public void setRating(Rating rating) {
+		this.rating = rating;
 	}
 
 }

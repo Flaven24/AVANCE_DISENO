@@ -21,23 +21,28 @@
 	</b:navBar>
 	<b:container>
 		<b:jumbotron></b:jumbotron>
-		<form id="formId" action="ServletPostNewRating" method="post">
-			<h:form>
+
+		<h:form>
+
+			<b:inputText placeholder="Comentario" value="#{controllerRating.rating.ccomment}" update="@next"/>
 			
-				<b:inputText placeholder="Calificacion" name="comment" />
-				<b:selectOneMenu value="#{controllerRating.claritySelected.cstatus}" name="clarity">
-					<f:selectItem itemLabel="--Seleccione" itemValue="-1"></f:selectItem>
-					<f:selectItems value="#{controllerRating.listClarity}" ></f:selectItems>
-				</b:selectOneMenu>
-				
-				<b:selectOneMenu value="#{controllerRating.difficultySelected.cstatus}" name="difficulty">
-					<f:selectItem itemLabel="--Seleccione" itemValue="-1"></f:selectItem>
-					<f:selectItems value="#{controllerRating.listDifficulty}" ></f:selectItems>
-				</b:selectOneMenu>
-				
-<!-- 				<b:inputText placeholder="Pagina Web" name="webpage" /> -->
-				<input class="btn btn-sm btn-info" type="submit" value="Registrar" />
-			</h:form>
+			<b:selectOneMenu label="Claridad con la que enseña" value="#{controllerRating.rating.clarityStatus}" process="@this" ajax="true">
+				<f:selectItems value="#{controllerRating.listClarity}" var="r"
+					itemValue="#{v}" itemLabel="#{r.cstatus}">
+				</f:selectItems>
+			</b:selectOneMenu>
+			
+			<b:selectOneMenu label="Dificultad en el curso" value="#{controllerRating.rating.difficultyStatus}" process="@this"  ajax="true">
+				<f:selectItems value="#{controllerRating.listDifficulty}" var="r"
+					itemValue="#{v}" itemLabel="#{r.cstatus}">
+				</f:selectItems>
+			</b:selectOneMenu>
+
+
+		</h:form>
+
+		<form id="formId" action="ServletPostNewRating" method="post">
+			<input class="btn btn-sm btn-info" type="submit" value="Registrar" />
 		</form>
 	</b:container>
 

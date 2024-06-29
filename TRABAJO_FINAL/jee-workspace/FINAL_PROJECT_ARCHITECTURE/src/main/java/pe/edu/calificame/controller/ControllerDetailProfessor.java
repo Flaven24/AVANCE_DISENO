@@ -16,6 +16,7 @@ import model.Professor;
 import model.Rating;
 import model.University;
 import pe.edu.calificame.service.ProfessorServiceImpl;
+import pe.edu.calificame.service.RatingServiceImpl;
 import pe.edu.calificame.service.UniversityServiceImpl;
 
 @Named
@@ -23,6 +24,7 @@ import pe.edu.calificame.service.UniversityServiceImpl;
 public class ControllerDetailProfessor implements Serializable {
 	
 	private Professor professor;
+	private University university;
 	
 	private int idprofessor;
 	
@@ -32,6 +34,10 @@ public class ControllerDetailProfessor implements Serializable {
 	UniversityServiceImpl universityServiceImpl;
 	@Inject
 	ProfessorServiceImpl professorServiceImpl;
+	@Inject
+	ControllerRating controllerRating;
+	@Inject
+	RatingServiceImpl ratingServiceImpl;
 
 	public ControllerDetailProfessor() {
 	}
@@ -48,9 +54,12 @@ public class ControllerDetailProfessor implements Serializable {
 	public void setIdprofessor(int idprofessor) {
 		this.idprofessor = idprofessor;
 		professor = professorServiceImpl.findByIdProfessor(idprofessor);
+		controllerRating.getRating().setProfessor(professor);
+		controllerRating.getRating().setUniversity(university);
 	}
 
 	public List<Rating> getListRatings() {
+		listRatings=getRatings();
 		return listRatings;
 	}
 
@@ -59,13 +68,20 @@ public class ControllerDetailProfessor implements Serializable {
 	}
 
 	private List<Rating> getRatings() {
-		// 
 		List<Rating> ratings= new ArrayList();
-//		List<DetailUniversityProfessor> listDetail = universityServiceImpl.findProfessorByIdUniversity(iduniversity);
-//		for (DetailUniversityProfessor _detail : listDetail)
-//			professors.add(_detail.getProfessor());
+		ratings=ratingServiceImpl.listRatingByIduniversityByIdProfessor(university.getIduniversity(), professor.getIdprofessor());
 		return ratings;
 	}
+
+	public University getUniversity() {
+		return university;
+	}
+
+	public void setUniversity(University university) {
+		this.university = university;
+	}
+	
+	
 	
 	
 }

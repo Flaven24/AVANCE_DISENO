@@ -80,7 +80,6 @@ public class ControllerUniversity implements Serializable {
 	public String selectUniversity() {
 		Map<String, String> map = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();		
 		int iduniversity = Integer.parseInt(map.get("param"));
-		System.out.println("Numero seleccionado: " + iduniversity);
 		controllerDetailUniversity.setIduniversity(iduniversity);
 		return "/university/DetailUniversity";
 	}

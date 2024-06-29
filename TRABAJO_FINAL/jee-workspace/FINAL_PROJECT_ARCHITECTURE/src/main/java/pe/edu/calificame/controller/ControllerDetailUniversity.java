@@ -48,6 +48,7 @@ public class ControllerDetailUniversity implements Serializable {
 	public void setIduniversity(int iduniversity) {
 		this.iduniversity = iduniversity;
 		university = universityServiceImpl.findByIdUniversity(iduniversity);
+		controllerDetailProfessor.setUniversity(university);
 		listProfessor = getProfessors();
 	}	
 	
@@ -68,6 +69,7 @@ public class ControllerDetailUniversity implements Serializable {
 	}
 
 	public List<Professor> getListProfessor() {
+		listProfessor = getProfessors();
 		return listProfessor;
 	}
 
@@ -78,7 +80,6 @@ public class ControllerDetailUniversity implements Serializable {
 	public String selectProfessor() {
 		Map<String, String> map = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();		
 		int idprofessor = Integer.parseInt(map.get("param"));
-		System.out.println("Numero seleccionado: " + idprofessor);
 		controllerDetailProfessor.setIdprofessor(idprofessor);
 		return "/professor/DetailProfessor";
 	}

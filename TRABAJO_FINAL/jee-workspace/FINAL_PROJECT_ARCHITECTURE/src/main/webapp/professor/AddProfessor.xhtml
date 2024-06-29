@@ -19,35 +19,19 @@
 			<b:navLink value="Contact" href="#contact"></b:navLink>
 		</b:navbarLinks>
 	</b:navBar>
-
 	<b:container>
 		<b:jumbotron></b:jumbotron>
-		<h:form id="formId">
-
-
-			<h2>Calificaciones</h2>
-			<a class="btn btn-lg btn-primary"
-				href="#{request.contextPath}/rating/AddRating.xhtml">Agregar Calificacion</a>
-			<b:dataTable value="#{controllerDetailProfessor.listRatings}"
-				var="e" border="1" paginated="false" >
-
-				<b:dataTableColumn label="Comentario">
-					<h:outputText value="#{e.ccomment}"></h:outputText>
-				</b:dataTableColumn>
-				<b:dataTableColumn label="Claridad">
-					<h:outputText value="#{e.clarityStatus.cstatus}"></h:outputText>
-				</b:dataTableColumn>
-				<b:dataTableColumn label="Dificultad">
-					<h:outputText value="#{e.difficultyStatus.cstatus}"></h:outputText>
-				</b:dataTableColumn>
+		<form id="formId" action="ServletPostNewProfessor" method="post">
+			<h:form>
+				<b:inputText placeholder="Nombre" name="name" />
+				<b:inputText placeholder="Apellido" name="lastname" />
+				<b:inputText placeholder="Facultad" name="faculty" />
+				<input class="btn btn-sm btn-info" type="submit" value="Registrar" />
 				
-				
-			</b:dataTable>
-
-
-
-		</h:form>
+			</h:form>
+		</form>
 	</b:container>
+
 
 </h:body>
 </html>
