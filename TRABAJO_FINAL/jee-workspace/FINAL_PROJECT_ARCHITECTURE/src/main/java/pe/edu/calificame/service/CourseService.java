@@ -17,5 +17,6 @@ import pe.edu.calificame.dao.CourseDAOImpl;
 public interface CourseService {
 
 	public List<Course> listAll();
+	List<Course> findByName(String name);
 
 }

@@ -11,7 +11,10 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Course.findAll", query="SELECT c FROM Course c")
+@NamedQueries({
+@NamedQuery(name="Course.findAll", query="SELECT c FROM Course c"),
+@NamedQuery(name="Course.findByName", query="SELECT c.cname, p.cname, p.clastname FROM Course c JOIN c.detailCourseProfessors d JOIN d.professor p WHERE c.cname LIKE :name")
+})
 public class Course implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -20,7 +23,7 @@ public class Course implements Serializable {
 	private Integer idcourse;
 
 	private Boolean bactive;
-
+	//@Column(name="cname")
 	private String cname;
 
 	private Timestamp dregist;

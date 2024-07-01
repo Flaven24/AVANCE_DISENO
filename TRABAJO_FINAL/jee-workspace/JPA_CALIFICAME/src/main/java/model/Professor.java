@@ -23,9 +23,9 @@ public class Professor implements Serializable {
 	private Integer idprofessor;
 
 	private Boolean bactive;
-
+	//@Column(name= "clastname")
 	private String clastname;
-
+	//@Column(name="cname")
 	private String cname;
 
 	private Timestamp dregist;
