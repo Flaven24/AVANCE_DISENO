@@ -27,7 +27,7 @@ import pe.edu.dto.DtoUniversity;
 public class ControllerCourse implements Serializable {
 	private String name;
 	private List<Course> listCourse;
-	private List<Course> listSearchCourse;
+	private List<Object[]> listSearchCourse;
 	@Inject
 	CourseServiceImpl courseServiceImpl;
 
@@ -48,14 +48,22 @@ public class ControllerCourse implements Serializable {
 		this.listCourse = listCourse;
 	}
 	
-	public List<Course> getListSearchCourse() {
+	public List<Object[]> getListSearchCourse() {
 		return listSearchCourse;
 	}
 
-	public void setListSearchCourse(List<Course> listSearchCourse) {
+	public void setListSearchCourse(List<Object[]> listSearchCourse) {
 		this.listSearchCourse = listSearchCourse;
 	}
 		
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public void searchByName()
 	{		
 		listSearchCourse= courseServiceImpl.findByName(name);		

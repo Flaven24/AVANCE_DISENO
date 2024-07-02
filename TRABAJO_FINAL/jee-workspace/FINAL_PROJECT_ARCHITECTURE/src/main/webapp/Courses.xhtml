@@ -14,29 +14,40 @@
 <h:body>
 	<b:navBar brand="CALIFICAME" brandHref="#" fixed="top" inverse="true">
 		<b:navbarLinks>
-			<b:navLink value="Home" href="#"></b:navLink>
+			<b:navLink value="Home" href="Index.xhtml"></b:navLink>
 			<b:navLink value="About" href="#about"></b:navLink>
 			<b:navLink value="Contact" href="#contact"></b:navLink>
 		</b:navbarLinks>
 	</b:navBar>
+<b:container style="margin-top: 70px;">	
 	<h:form id="formId">
-		<h:dataTable value="#{controllerCourse.listCourse}" var="e" border="1">
+	
+	<h:panelGrid columns="3">
+        <h:outputLabel for="searchName" value="Course Name:" />
+        <h:inputText id="searchName" value="#{controllerCourse.name}" />
 
-			<h:column>
-				<h:outputText value="#{e.idcourse}"></h:outputText>
-			</h:column>
+       <b:commandButton value="Buscar Curso" type="submit"
+				action="#{controllerCourse.searchByName}" />
+    </h:panelGrid>
+	
+	
+		<b:dataTable value="#{controllerCourse.listSearchCourse}" var="e"  border="1" paginated="false" >
 
-			<h:column>
-				<h:outputText value="#{e.cname}"></h:outputText>
-			</h:column>
+			<b:dataTableColumn label="Curso">
+				<h:outputText value="#{e[0]}"></h:outputText>
+			</b:dataTableColumn>
 
-			<h:column>
-				<h:outputText value="#{e.nsemester}"></h:outputText>
-			</h:column>
+			<b:dataTableColumn label="Docente">
+				<h:outputText value="#{e[1]}"></h:outputText>
+			</b:dataTableColumn>
 
-		</h:dataTable>
+			<b:dataTableColumn label="">
+				<h:outputText value="#{e[2]}"></h:outputText>
+			</b:dataTableColumn>
+
+		</b:dataTable>
 
 	</h:form>
-
+  </b:container>
 </h:body>
 </html>

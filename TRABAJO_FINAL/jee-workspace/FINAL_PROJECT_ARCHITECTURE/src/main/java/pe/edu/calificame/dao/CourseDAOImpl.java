@@ -6,6 +6,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import model.Course;
@@ -34,9 +35,13 @@ public class CourseDAOImpl implements CourseDAO {
 	}
 
 	@Override
-	public List<Course> findByName(String name) {
-		TypedQuery<Course> list = em.createNamedQuery("Course.findByName", Course.class);
-		list.setParameter("name",name);
-		return list.getResultList();
+	public List<Object[]> findByName(String name) {
+		//TypedQuery<Object> list = em.createNamedQuery("Course.findByName", Course.class);
+		//list.setParameter("name",name);
+		//return list.getResultList();
+		Query query = em.createNamedQuery("Course.findByName");
+		query.setParameter("name", name);
+		return query.getResultList();
+		
 	}
 }

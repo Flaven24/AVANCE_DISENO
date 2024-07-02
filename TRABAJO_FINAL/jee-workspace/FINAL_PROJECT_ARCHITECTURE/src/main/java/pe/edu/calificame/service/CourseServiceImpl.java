@@ -35,8 +35,8 @@ public class CourseServiceImpl implements CourseService{
 
 
 	@Override
-	public List<Course> findByName(String name) {
-		return courseDAOImpl.findByName("%"+name.toUpperCase()+"%");
+	public List<Object[]> findByName(String name) {
+		return courseDAOImpl.findByName("%"+name+"%");
 	}
 
 
