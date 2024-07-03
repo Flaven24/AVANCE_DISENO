@@ -97,5 +97,9 @@ public class ControllerRating implements Serializable {
 	public void setRating(Rating rating) {
 		this.rating = rating;
 	}
+	
+	public void clearRating() {
+		rating= new Rating();
+	}
 
 }

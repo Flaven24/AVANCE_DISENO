@@ -41,7 +41,7 @@ public class ServletPostNewRating extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		controllerRating.getRating().setDregist(new Timestamp(new Date().getTime()));
-		ratingServiceImpl.register(controllerRating.getRating());
+		ratingServiceImpl.register(controllerRating.getRating().Clone());
 		request.getRequestDispatcher("/professor/DetailProfessor.xhtml").forward(request, response);
 	}
 
