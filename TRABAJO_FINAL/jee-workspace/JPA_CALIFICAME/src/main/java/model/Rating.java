@@ -2,7 +2,11 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import pattern.IPrototype;
+
 import java.sql.Timestamp;
+import java.util.Date;
 
 
 /**
@@ -15,7 +19,7 @@ import java.sql.Timestamp;
 	@NamedQuery(name="Rating.findByIdUniversityByIdProfessor", query="SELECT r FROM Rating r WHERE r.professor.idprofessor=:idprofessor AND r.university.iduniversity=:iduniversity ")
 	
 })
-public class Rating implements Serializable {
+public class Rating implements Serializable, IPrototype{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -49,6 +53,15 @@ public class Rating implements Serializable {
 	private University university;
 
 	public Rating() {
+	}
+	
+	public Rating(Rating rating) {
+		this.ccomment=rating.ccomment;
+		this.dregist=new Timestamp(new Date().getTime());
+		this.clarityStatus=rating.clarityStatus;
+		this.difficultyStatus=rating.difficultyStatus;
+		this.professor=rating.professor;
+		this.university=rating.university;
 	}
 
 	public Integer getIdrating() {
@@ -113,6 +126,11 @@ public class Rating implements Serializable {
 
 	public void setUniversity(University university) {
 		this.university = university;
+	}
+	
+	@Override
+	public Rating Clone() {
+		return new Rating(this);
 	}
 
 }
