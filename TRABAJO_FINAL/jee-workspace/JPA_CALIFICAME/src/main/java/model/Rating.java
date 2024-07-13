@@ -8,18 +8,16 @@ import pattern.IPrototype;
 import java.sql.Timestamp;
 import java.util.Date;
 
-
 /**
  * The persistent class for the rating database table.
  * 
  */
 @Entity
-@NamedQueries({
-	@NamedQuery(name="Rating.findAll", query="SELECT r FROM Rating r"),
-	@NamedQuery(name="Rating.findByIdUniversityByIdProfessor", query="SELECT r FROM Rating r WHERE r.professor.idprofessor=:idprofessor AND r.university.iduniversity=:iduniversity ")
-	
+@NamedQueries({ @NamedQuery(name = "Rating.findAll", query = "SELECT r FROM Rating r"),
+		@NamedQuery(name = "Rating.findByIdUniversityByIdProfessor", query = "SELECT r FROM Rating r WHERE r.professor.idprofessor=:idprofessor AND r.university.iduniversity=:iduniversity ")
+
 })
-public class Rating implements Serializable, IPrototype{
+public class Rating implements Serializable, IPrototype {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -32,36 +30,44 @@ public class Rating implements Serializable, IPrototype{
 
 	private Timestamp dregist;
 
-	//bi-directional many-to-one association to ClarityStatus
+	// bi-directional many-to-one association to ClarityStatus
 	@ManyToOne
-	@JoinColumn(name="idclarity")
+	@JoinColumn(name = "idclarity")
 	private ClarityStatus clarityStatus;
 
-	//bi-directional many-to-one association to DifficultyStatus
+	// bi-directional many-to-one association to DifficultyStatus
 	@ManyToOne
-	@JoinColumn(name="iddifficulty")
+	@JoinColumn(name = "iddifficulty")
 	private DifficultyStatus difficultyStatus;
 
-	//bi-directional many-to-one association to Professor
+	// bi-directional many-to-one association to Professor
 	@ManyToOne
-	@JoinColumn(name="idprofessor")
+	@JoinColumn(name = "idprofessor")
 	private Professor professor;
 
-	//bi-directional many-to-one association to University
+	// bi-directional many-to-one association to University
 	@ManyToOne
-	@JoinColumn(name="iduniversity")
+	@JoinColumn(name = "iduniversity")
 	private University university;
+
+	private String cclass;
+	private Boolean bassistance;
+	private Integer nqualification;
 
 	public Rating() {
 	}
-	
+
 	public Rating(Rating rating) {
-		this.ccomment=rating.ccomment;
-		this.dregist=new Timestamp(new Date().getTime());
-		this.clarityStatus=rating.clarityStatus;
-		this.difficultyStatus=rating.difficultyStatus;
-		this.professor=rating.professor;
-		this.university=rating.university;
+		this.ccomment = rating.ccomment;
+		this.dregist = new Timestamp(new Date().getTime());
+		this.clarityStatus = rating.clarityStatus;
+		this.difficultyStatus = rating.difficultyStatus;
+		this.professor = rating.professor;
+		this.university = rating.university;
+		this.bassistance = rating.bassistance;
+		this.brecommendation = rating.brecommendation;
+		this.cclass = rating.cclass;
+		this.nqualification = rating.nqualification;
 	}
 
 	public Integer getIdrating() {
@@ -128,6 +134,30 @@ public class Rating implements Serializable, IPrototype{
 		this.university = university;
 	}
 	
+	public String getCclass() {
+		return cclass;
+	}
+
+	public void setCclass(String cclass) {
+		this.cclass = cclass;
+	}
+
+	public Boolean getBassistance() {
+		return bassistance;
+	}
+
+	public void setBassistance(Boolean bassistance) {
+		this.bassistance = bassistance;
+	}
+
+	public Integer getNqualification() {
+		return nqualification;
+	}
+
+	public void setNqualification(Integer nqualification) {
+		this.nqualification = nqualification;
+	}
+
 	@Override
 	public Rating Clone() {
 		return new Rating(this);

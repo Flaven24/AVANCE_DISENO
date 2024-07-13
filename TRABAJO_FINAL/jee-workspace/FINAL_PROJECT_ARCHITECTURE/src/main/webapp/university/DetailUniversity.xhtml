@@ -12,11 +12,14 @@
 	<title>CALIFICAME</title>
 </h:head>
 <h:body>
-	<b:navBar brand="CALIFICAME" brandHref="#" fixed="top" inverse="true">
+	<b:navBar brand="CALIFICAME"
+		brandHref="#{request.contextPath}/Index.xhtml" fixed="top"
+		inverse="true">
 		<b:navbarLinks>
-			<b:navLink value="Home" href="#"></b:navLink>
-			<b:navLink value="About" href="#about"></b:navLink>
-			<b:navLink value="Contact" href="#contact"></b:navLink>
+			<b:navLink value="Universidad"
+				href="#{request.contextPath}/university/University.xhtml"></b:navLink>
+			<b:navLink value="Cursos" href="#{request.contextPath}/Courses.xhtml"></b:navLink>
+			<b:navLink value="Acerca de" href="#c"></b:navLink>
 		</b:navbarLinks>
 	</b:navBar>
 
@@ -24,13 +27,19 @@
 		<b:jumbotron></b:jumbotron>
 		<h:form id="formId">
 
+			<b:alert severity="success">
+				<h1>
+					<h:outputText
+						value="#{controllerDetailUniversity.university.cname}" />
+				</h1>
+			</b:alert>
 
-			<h2>Lista de profesores</h2>
+			<h3>Lista de profesores</h3>
 			<a class="btn btn-lg btn-success"
 				href="#{request.contextPath}/professor/AddProfessor.xhtml">Agregar
 				nuevo Profesor</a>
 			<b:dataTable value="#{controllerDetailUniversity.listProfessor}"
-				var="e" border="1" paginated="false" >
+				var="e" border="1" paginated="false">
 
 				<b:dataTableColumn label="Nombre">
 					<h:outputText value="#{e. cname}"></h:outputText>
@@ -39,12 +48,13 @@
 					<h:outputText value="#{e.clastname}"></h:outputText>
 				</b:dataTableColumn>
 				<b:dataTableColumn label="">
-					<h:commandLink action="#{controllerDetailUniversity.selectProfessor}">
-						<b:button value="Calificar" look="primary"/>
+					<h:commandLink
+						action="#{controllerDetailUniversity.selectProfessor}">
+						<b:button value="Calificar" look="primary" />
 						<f:param name="param" value="#{e.idprofessor}"></f:param>
 					</h:commandLink>
 				</b:dataTableColumn>
-				
+
 			</b:dataTable>
 
 

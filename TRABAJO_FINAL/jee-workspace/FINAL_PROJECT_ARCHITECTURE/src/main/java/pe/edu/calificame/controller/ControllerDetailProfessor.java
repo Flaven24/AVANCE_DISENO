@@ -80,8 +80,16 @@ public class ControllerDetailProfessor implements Serializable {
 	public void setUniversity(University university) {
 		this.university = university;
 	}
+
+	public Professor getProfessor() {
+		return professor;
+	}
+
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
+	}
 	
-	
+
 	
 	
 }

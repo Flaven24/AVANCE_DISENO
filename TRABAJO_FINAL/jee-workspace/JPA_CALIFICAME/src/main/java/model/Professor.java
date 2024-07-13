@@ -150,5 +150,9 @@ public class Professor implements Serializable {
 
 		return rating;
 	}
+	
+	public String getFullname() {
+		return this.cname+" "+this.clastname;
+	}
 
 }

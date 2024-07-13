@@ -40,8 +40,10 @@ public class ServletPostNewRating extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		if(!controllerRating.getRating().getCclass().isEmpty()&&!controllerRating.getRating().getCcomment().isEmpty()&&!controllerRating.getRating().get().isEmpty()&&)
 		controllerRating.getRating().setDregist(new Timestamp(new Date().getTime()));
 		ratingServiceImpl.register(controllerRating.getRating().Clone());
+		controllerRating.clearRating();
 		request.getRequestDispatcher("/professor/DetailProfessor.xhtml").forward(request, response);
 	}
 

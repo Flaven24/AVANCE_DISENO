@@ -10,33 +10,63 @@
 
 <h:head>
 	<title>CALIFICAME</title>
+
+
 </h:head>
 <h:body>
-	<b:navBar brand="CALIFICAME" brandHref="#" fixed="top" inverse="true">
+	<b:navBar brand="CALIFICAME"
+		brandHref="#{request.contextPath}/Index.xhtml" fixed="top"
+		inverse="true">
 		<b:navbarLinks>
-			<b:navLink value="Home" href="#"></b:navLink>
-			<b:navLink value="About" href="#about"></b:navLink>
-			<b:navLink value="Contact" href="#contact"></b:navLink>
+			<b:navLink value="Universidad"
+				href="#{request.contextPath}/university/University.xhtml"></b:navLink>
+			<b:navLink value="Cursos" href="#{request.contextPath}/Courses.xhtml"></b:navLink>
+			<b:navLink value="Acerca de" href="#c"></b:navLink>
 		</b:navbarLinks>
 	</b:navBar>
 	<b:container>
 		<b:jumbotron></b:jumbotron>
 
 		<h:form>
+			<b> <h:outputText value="Clase"></h:outputText></b>
+			<b:inputText value="#{controllerRating.rating.cclass}" update="@next" />
+			<b:message for="@previous" />
+			<b> <h:outputText value="Comentarios"></h:outputText></b>
+			<b:inputText placeholder="Escribe algo"
+				value="#{controllerRating.rating.ccomment}" update="@next" />
 
-			<b:inputText placeholder="Comentario" value="#{controllerRating.rating.ccomment}" update="@next"/>
-			
-			<b:selectOneMenu label="Claridad con la que enseña" value="#{controllerRating.rating.clarityStatus}" process="@this" ajax="true">
+			<b:selectOneMenu label="Claridad con la que enseña"
+				value="#{controllerRating.rating.clarityStatus}" process="@this"
+				ajax="true">
 				<f:selectItems value="#{controllerRating.listClarity}" var="r"
-					itemValue="#{v}" itemLabel="#{r.cstatus}">
+					itemValue="#{v}" itemLabel="#{r.cstatus}" required="true">
 				</f:selectItems>
 			</b:selectOneMenu>
 
-			<b:selectOneMenu label="Dificultad en el curso" value="#{controllerRating.rating.difficultyStatus}" process="@this"  ajax="true">
+			<b:selectOneMenu label="Dificultad en el curso"
+				value="#{controllerRating.rating.difficultyStatus}" process="@this"
+				ajax="true">
 				<f:selectItems value="#{controllerRating.listDifficulty}" var="r"
-					itemValue="#{v}" itemLabel="#{r.cstatus}">
+					itemValue="#{v}" itemLabel="#{r.cstatus}" required="true">
 				</f:selectItems>
 			</b:selectOneMenu>
+
+			<b:switch value="#{controllerRating.rating.brecommendation}"
+				label="Lo recomiendas" offColor="danger" onColor="success"
+				offText="NO" onText="SI" update="@next" />
+			<b:switch value="#{controllerRating.rating.bassistance}"
+				label="Asistencia a clase" offColor="danger" onColor="success"
+				offText="NO OBLIGATORIA" onText="OBLIGATORIA" update="@next" />
+
+			<b> <h:outputText value="Calificacion al docente"></h:outputText>
+			</b>
+			<b:radiobutton value="#{controllerRating.rating.nqualification}" update="@this">
+				<f:selectItem itemLabel="1" itemValue="1" required="true" />
+				<f:selectItem itemLabel="2" itemValue="2" required="true" />
+				<f:selectItem itemLabel="3" itemValue="3" required="true" />
+				<f:selectItem itemLabel="4" itemValue="4" required="true" />
+				<f:selectItem itemLabel="5" itemValue="5" required="true" />
+			</b:radiobutton>
 
 
 		</h:form>

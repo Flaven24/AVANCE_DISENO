@@ -40,6 +40,8 @@ public class ControllerRating implements Serializable {
 
 	@Inject
 	RatingServiceImpl ratingServiceImpl;
+	@Inject
+	ControllerDetailProfessor controllerDetailProfessor;
 
 	public ControllerRating() {
 	}
@@ -99,7 +101,11 @@ public class ControllerRating implements Serializable {
 	}
 	
 	public void clearRating() {
-		rating= new Rating();
+		rating=new Rating();
+		rating.setProfessor(controllerDetailProfessor.getProfessor());
+		rating.setUniversity(controllerDetailProfessor.getUniversity());
+		claritySelected = new ClarityStatus();
+		difficultySelected = new DifficultyStatus();
 	}
 
 }
