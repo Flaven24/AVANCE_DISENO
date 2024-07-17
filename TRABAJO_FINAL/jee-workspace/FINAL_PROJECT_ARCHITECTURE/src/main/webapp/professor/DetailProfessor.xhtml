@@ -34,29 +34,46 @@
 			</b:alert>
 
 			<h3>
-				<h:outputText value="#{controllerDetailProfessor.professor.fullname}" />
+				<h:outputText
+					value="#{controllerDetailProfessor.professor.fullname}" />
 			</h3>
 
 			<a class="btn btn-lg btn-primary"
-				href="#{request.contextPath}/rating/AddRating.xhtml">Agregar Calificacion</a>
+				href="#{request.contextPath}/rating/AddRating.xhtml">Agregar
+				Calificacion</a>
 			<h2>Calificaciones</h2>
 			<b:dataTable value="#{controllerDetailProfessor.listRatings}" var="e"
-				border="1" paginated="false" searching="false">
+				border="1" paginated="false" searching="false" page-length="5">
 
-				<b:dataTableColumn label="Clase">
-					<h:outputText value="#{e.cclass}"></h:outputText>
+				<b:dataTableColumn label="">
+
+					<b>
+					#{e.convertirFecha}
+					</b>
+					<br/>
+					<h:graphicImage url="/img/#{e.nqualification}.png" />
+					
+
 				</b:dataTableColumn>
-				<b:dataTableColumn label="Comentario">
+				<b:dataTableColumn label="CLASE">
+					<b>Clase:</b>
+					#{e.cclass}
+				      <br />
+					<b>Recomienda el curso:</b>
+					      #{e.nameRecommendation}	
+				      <br />
+					<b>Asistencia:</b>
+				      #{e.nameAssistance}	
+				</b:dataTableColumn>
+				<b:dataTableColumn label="COMENTARIO">
 					<h:outputText value="#{e.ccomment}"></h:outputText>
 				</b:dataTableColumn>
-				<b:dataTableColumn label="Claridad">
-					<h:outputText value="#{e.clarityStatus.cstatus}"></h:outputText>
-				</b:dataTableColumn>
-				<b:dataTableColumn label="Dificultad">
-					<h:outputText value="#{e.difficultyStatus.cstatus}"></h:outputText>
-				</b:dataTableColumn>
-				<b:dataTableColumn label="Calificacion">
-					<h:outputText value="#{e.nqualification}"></h:outputText>
+				<b:dataTableColumn label="CALIFICACION">
+					<b>Claridad:</b>
+				      #{e.clarityStatus.cstatus}	
+				      <br />
+					<b>Dificultad:</b>
+				      #{e.difficultyStatus.cstatus}
 				</b:dataTableColumn>
 
 

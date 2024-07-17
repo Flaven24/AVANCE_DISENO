@@ -38,6 +38,7 @@
 			<b:selectOneMenu label="Claridad con la que enseña"
 				value="#{controllerRating.rating.clarityStatus}" process="@this"
 				ajax="true">
+				<f:selectItem itemLabel="(selecciona)" itemValue="" />
 				<f:selectItems value="#{controllerRating.listClarity}" var="r"
 					itemValue="#{v}" itemLabel="#{r.cstatus}" required="true">
 				</f:selectItems>
@@ -46,6 +47,7 @@
 			<b:selectOneMenu label="Dificultad en el curso"
 				value="#{controllerRating.rating.difficultyStatus}" process="@this"
 				ajax="true">
+				<f:selectItem itemLabel="(selecciona)" itemValue="" />
 				<f:selectItems value="#{controllerRating.listDifficulty}" var="r"
 					itemValue="#{v}" itemLabel="#{r.cstatus}" required="true">
 				</f:selectItems>

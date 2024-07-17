@@ -6,6 +6,7 @@ import javax.persistence.*;
 import pattern.IPrototype;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -161,6 +162,21 @@ public class Rating implements Serializable, IPrototype {
 	@Override
 	public Rating Clone() {
 		return new Rating(this);
+	}
+	
+	public String getNameRecommendation() {
+		return this.brecommendation?"Recomendado":"No recomendado";
+	}
+	
+	public String getNameAssistance() {
+		return this.bassistance?"Obligatorio":"Opcional";
+	}
+
+	
+	
+	public String getConvertirFecha() {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		return formatter.format(this.dregist);
 	}
 
 }
