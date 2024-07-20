@@ -80,6 +80,7 @@ public class Rating implements Serializable, IPrototype {
 	}
 
 	public Boolean getBrecommendation() {
+
 		return this.brecommendation;
 	}
 
@@ -144,7 +145,9 @@ public class Rating implements Serializable, IPrototype {
 	}
 
 	public Boolean getBassistance() {
-		return bassistance;
+		
+		return this.bassistance;	
+
 	}
 
 	public void setBassistance(Boolean bassistance) {
@@ -165,11 +168,20 @@ public class Rating implements Serializable, IPrototype {
 	}
 	
 	public String getNameRecommendation() {
+		if(this.brecommendation!=null)
+		{
 		return this.brecommendation?"Recomendado":"No recomendado";
+		}
+		return "No recomendado";
 	}
 	
 	public String getNameAssistance() {
+		if(this.bassistance!=null)
+		{
 		return this.bassistance?"Obligatorio":"Opcional";
+		}
+		return "Opcional";
+		
 	}
 
 	

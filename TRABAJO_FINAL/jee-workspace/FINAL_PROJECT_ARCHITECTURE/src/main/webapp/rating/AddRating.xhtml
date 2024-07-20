@@ -29,7 +29,7 @@
 
 		<h:form>
 			<b> <h:outputText value="Clase"></h:outputText></b>
-			<b:inputText value="#{controllerRating.rating.cclass}" update="@next" />
+			<b:inputText value="#{controllerRating.rating.cclass}" update="@next"/>
 			<b:message for="@previous" />
 			<b> <h:outputText value="Comentarios"></h:outputText></b>
 			<b:inputText placeholder="Escribe algo"
@@ -62,7 +62,7 @@
 
 			<b> <h:outputText value="Calificacion al docente"></h:outputText>
 			</b>
-			<b:radiobutton value="#{controllerRating.rating.nqualification}" update="@this">
+			<b:radiobutton value="#{controllerRating.rating.nqualification}" update="@this" required="true">
 				<f:selectItem itemLabel="1" itemValue="1" required="true" />
 				<f:selectItem itemLabel="2" itemValue="2" required="true" />
 				<f:selectItem itemLabel="3" itemValue="3" required="true" />
